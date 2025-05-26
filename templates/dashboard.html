@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Your Personal Bests</h1>
+    {% if stats %}
+        <p>Squat: {{ stats[0] }} lbs</p>
+        <p>Deadlift: {{ stats[1] }} lbs</p>
+        <p>Leg Press: {{ stats[2] }} lbs</p>
+        <p>Bench Press: {{ stats[3] }} lbs</p>
+    {% else %}
+        <p>No stats recorded yet.</p>
+    {% endif %}
+    <a href="/">Logout</a>
+</body>
+</html>
