@@ -2,17 +2,74 @@
 <html>
 <head>
     <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Your Personal Bests</h1>
-    {% if stats %}
-        <p>Squat: {{ stats[0] }} lbs</p>
-        <p>Deadlift: {{ stats[1] }} lbs</p>
-        <p>Leg Press: {{ stats[2] }} lbs</p>
-        <p>Bench Press: {{ stats[3] }} lbs</p>
-    {% else %}
-        <p>No stats recorded yet.</p>
-    {% endif %}
-    <a href="/">Logout</a>
+<div class="container">
+    <h1>Log Your Exercise Stats</h1>
+
+    <div class="form-container">
+        <form action="{{ url_for('add_stats') }}" method="POST">
+            <label for="exercise">Exercise Name:</label>
+            <input type="text" id="exercise" name="exercise" required>
+
+            <label for="reps">Reps:</label>
+            <input type="number" id="reps" name="reps" required>
+
+            <label for="sets">Sets:</label>
+            <input type="number" id="sets" name="sets" required>
+
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" name="weight" step="0.1" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+<h2>Exercise Stats</h2>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <label for="selected_date">Select a Date:</label>
+        <input type="date" id="selected_date" name="selected_date" value="{{ selected_date }}">
+
+        <label for="selected_exercise">Select Exercise:</label>
+        <select id="selected_exercise" name="selected_exercise">
+        <option value="">-- All Exercises --</option>
+        {% for ex in exercises %}
+        <option value="{{ ex[0] }}" {% if ex[0] == selected_exercise %}selected{% endif %}>{{ ex[0] }}</option>
+        {% endfor %}
+        </select>
+        <button type="submit" class="button">View</button>
+    </form>
+    {% if has_data %}
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Exercise</th>
+                <th>Reps</th>
+                <th>Sets</th>
+                <th>Weight</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in stats %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <p style="text-align: center; font-weight: bold; color: #ff4757;">No data available for the {{ selected_date }}.</p>
+{% endif %}
+    <a href="/" class="logout-button">Logout</a>
 </body>
 </html>
