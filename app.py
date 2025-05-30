@@ -90,8 +90,10 @@ def register():
                            (first_name, last_name, email, hashed_password))
             conn.commit()
             return redirect(url_for("login"))
-        except:
+        except sqlite3.IntegrityError:
             return "Email already registered!"
+        except Exception as e:
+            return f"Registration failed due to an error: {e}"
         finally:
             conn.close()
     print(request.method)
