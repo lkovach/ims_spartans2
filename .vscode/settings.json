@@ -2,6 +2,7 @@
     "cSpell.words": [
         "deadlift",
         "gunicorn",
-        "Razzle"
+        "Razzle",
+        "werkzeug"
     ]
 }
