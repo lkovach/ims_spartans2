@@ -49,8 +49,6 @@ select {
     border-radius: 5px;
 }
 
-
-
 /* Centering the form */
 form {
     display: flex;
@@ -98,6 +96,7 @@ tbody tr:hover {
     width: 60%;
     margin-bottom: 20px;
 }
+
 /* Button styling */
 /* Button Styling */
 .button {
@@ -135,6 +134,7 @@ tbody tr:hover {
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
