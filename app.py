@@ -81,6 +81,8 @@ def register():
         
         if password != confirm_password:
             return "Passwords do not match!"
+        
+        hashed_password = generate_password_hash(password, method="pbkdf2:sha256", salt_length=16)
 
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
