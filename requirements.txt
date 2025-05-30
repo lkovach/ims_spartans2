@@ -1,4 +1,4 @@
 Flask
 gunicorn
-sqlite3
+SQLite3
 werkzeug
