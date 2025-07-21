@@ -14,9 +14,9 @@ services:
     ports:
       - 8080:8080
     # Uncomment the following lines to enable the database dependency
-    # depends_on:
-    #   db:
-    #     condition: service_healthy
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     image: postgres
