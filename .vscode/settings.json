@@ -1,9 +1,15 @@
 {
     "cSpell.words": [
+        "adduser",
+        "appuser",
         "deadlift",
+        "gecos",
         "gunicorn",
         "healthcheck",
         "isready",
+        "nologin",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED",
         "Razzle",
         "werkzeug"
     ]
