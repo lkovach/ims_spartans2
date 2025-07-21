@@ -11,10 +11,14 @@
 #version: '3.8'
 
 services:
+  # db:
+  #   image: sqlite:latest
+  #   volumes:
+  #     - ./db-data:/var/lib/sqlite/data
   web:
     build: .
     ports:
-      - "8080:8080"
+      - "5000:5000"
     volumes:
       - ./db:/app/db:rw
     environment:
