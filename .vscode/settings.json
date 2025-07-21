@@ -2,6 +2,8 @@
     "cSpell.words": [
         "deadlift",
         "gunicorn",
+        "healthcheck",
+        "isready",
         "Razzle",
         "werkzeug"
     ]
