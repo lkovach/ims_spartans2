@@ -4,13 +4,14 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
 print(re)
+db_path = os.getenv("DATABASE_PATH", "db/database.db")
 
 def is_valid_email(email):
     """Check if the email is valid."""
     pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
     return bool(re.match(pattern, email))
 
-conn = sqlite3.connect("database.db")
+conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
 # Fetch all users
@@ -32,7 +33,6 @@ conn.close()
 
 print("Passwords updated successfully!")
 app = Flask(__name__)
-db_path = os.getenv("DATABASE_PATH", "db/database.db")
 app.secret_key = "your_secret_key"
 
 # Database initialization
