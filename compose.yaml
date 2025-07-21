@@ -33,16 +33,16 @@ services:
       db:
         condition: service_healthy
   db:
-    image: postgres
+    image: sqlite:latest
     restart: always
-    user: postgres
+    user: sqlite
     secrets:
       - db-password
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/sqlite/data
     environment:
-      - POSTGRES_DB=example
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+      - SQLITE_DB=/app/db/database.db
+      #- POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     expose:
       - 5432
     healthcheck:
