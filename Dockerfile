@@ -51,5 +51,5 @@ EXPOSE 8080
 CMD gunicorn 'app:app' --bind=0.0.0.0:8080
 
 # Run the database
-RUN mkdir -p /app/db && chmod 777 /app/db
+RUN mkdir -p db && chmod 777 db
 USER appuser
