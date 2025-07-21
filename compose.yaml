@@ -22,13 +22,13 @@ services:
     image: postgres
     restart: always
     user: postgres
-    secrets:
-      - db-password
+    #secrets:
+    #  - db-password
     volumes:
       - db-data:D:\ims_spartans\database.db
     environment:
       - POSTGRES_DB=example
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+      #- POSTGRES_PASSWORD_FILE=/run/secrets/db-password
     expose:
       - 5432
     healthcheck:
@@ -40,7 +40,7 @@ services:
 volumes:
   db-data:
 
-secrets:
-  db-password:
-    file: db/password.txt
+#secrets:
+  #db-password:
+    #file: db/password.txt
 
