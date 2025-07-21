@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -31,11 +32,12 @@ conn.close()
 
 print("Passwords updated successfully!")
 app = Flask(__name__)
+db_path = os.getenv("DATABASE_PATH", "db/database.db")
 app.secret_key = "your_secret_key"
 
 # Database initialization
 def init_db():
-    conn = sqlite3.connect("database.db")
+    conn = sqlite3.connect("db_path")
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
