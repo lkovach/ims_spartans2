@@ -8,7 +8,7 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 
-version: '3.8'
+#version: '3.8'
 
 services:
   web:
@@ -46,7 +46,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-volumes: {}
+volumes:
+  db-data:
 secrets:
   db-password:
     file: db/password.txt
